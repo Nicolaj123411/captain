@@ -10,7 +10,6 @@
                 <div class="box">
                         <i class="fas fa-anchor"></i>
                     <h1>@lang('messages.welcome')</h1>
-
                         <div class="language_selector">
                             <a href="/set_language/da">
                                     <img src="{{ asset('svg/lang/da.svg')}}" alt="Dansk" height="65" width="65">
@@ -22,8 +21,6 @@
                                     <img src="{{ asset('svg/lang/en.svg') }}" alt="English" height="65" width="65">
                             </a>
                         </div>
-
-                {{-- <a href="{{ route('register') }}" class="big_button">Choose language</a> --}}
                 </div>
             </div>
         </div>

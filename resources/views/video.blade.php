@@ -1,7 +1,7 @@
 @extends('app')
 @section('content')
     <nav class="navbar sticky-top navbar-light bg-light">
-        <a href="#">@lang('messages.enterCode') VIDEO SIDE</a>
+        <a href="#">@lang('messages.enterCode')</a>
     </nav>
     <div class="bg-spacer"></div>
     <div class="container">
@@ -9,7 +9,7 @@
             <div class="main-container">
                 <div class="box">
                 <i class="fas fa-anchor"></i>
-                <h1>The beginning</h1>
+                <h1>@lang('messages.videoBody')</h1>
 
                 <div class="embed-responsive embed-responsive-16by9 mt-4 mb-4">
                     @if(session('locale') == 'da')

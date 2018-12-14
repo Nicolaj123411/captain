@@ -10522,7 +10522,7 @@ body {
 .not-complete img,
 .not-complete h1,
 .not-complete i {
-  opacity: 0.5;
+  opacity: 0.5 !important;
 }
 
 .score span {

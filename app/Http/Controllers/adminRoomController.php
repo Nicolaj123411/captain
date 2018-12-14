@@ -15,7 +15,7 @@ class adminRoomController extends Controller
         $house = House::find($house_id);
         $rooms = Room::where('house_id', $house_id)->get();
 
-        return view('admin.rooms.index1', compact('rooms', 'house'));
+        return view('admin.rooms.index', compact('rooms', 'house'));
     }
 
     public function edit($room){
@@ -28,7 +28,6 @@ class adminRoomController extends Controller
          $validatedData = $request->validate([
             'title' => 'required',
             'body' => 'required',
-            'fact' => 'required'
         ]);
 
         $room_content = RoomContent::find($room);
@@ -86,7 +85,6 @@ class adminRoomController extends Controller
         $validatedData = $request->validate([
             'title' => 'required',
             'body' => 'required',
-            'fact' => 'required'
         ]);
 
         $room_content = new RoomContent;
@@ -135,5 +133,49 @@ class adminRoomController extends Controller
          }
 
 
+    }
+    public function editImageIndex($room_id)
+    {
+        $icon_directory = "svg/icons";
+         $icons = str_replace("$icon_directory/","",glob($icon_directory . "/*.svg"));
+
+        $image_directory = "svg/header_image";
+         $images = str_replace("$image_directory/","",glob($image_directory . "/*.svg"));
+        return view('admin.rooms.change_image', compact('room_id', 'images', 'icons'));
+    }
+    public function editImage($room_id, $image_type, $image)
+    {
+       $room = Room::find($room_id);
+        if($image_type == 'icon'){
+            $room->icon = $image;
+            $room->save();
+        }
+
+        if($image_type == 'img'){
+            $room->img = $image;
+            $room->save();
+        }
+        return redirect()->back()->with('message', 'The image has been updated!');
+    }
+
+    public function createQuiz($room_id, $lang)
+    {
+       return view('admin.rooms.create_quiz', compact('room_id', 'lang'));
+    }
+    public function quizStore(Request $request, $room_id)
+    {
+
+        $validatedData = $request->validate([
+            'quiz' => 'required',
+            'lang' =>'required'
+        ]);
+
+        $quiz = new roomQuiz;
+
+        $quiz->question = $request->quiz;
+        $quiz->lang = $request->lang;
+        $quiz->room_id = $room_id;
+        $quiz->save();
+        return redirect()->back()->with('message', 'Quiz has been created!');
     }
 }

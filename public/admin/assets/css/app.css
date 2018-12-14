@@ -1,6 +1,6 @@
 /*!
  * beagle v1.4.0-prerelease (https://foxythemes.net)
- * Copyright 2018 Foxy Themes all rights reserved 
+ * Copyright 2018 Foxy Themes all rights reserved
  */
 
 @media print {
@@ -7041,9 +7041,9 @@ a.text-grey:hover, a.text-grey:focus {
   visibility: hidden !important; }
 
 /* General styles for the modal */
-/* 
+/*
 Styles for the html/body for special modal where we want 3d effects
-Note that we need a container wrapping all content on the page for the 
+Note that we need a container wrapping all content on the page for the
 perspective effects (not including the modals and the overlay).
 */
 .modal-open {
@@ -7718,7 +7718,7 @@ canvas {
       display: block; }
       @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
         .be-top-header .be-navbar-header .navbar-brand {
-          background-image: url("../img/logo-xx.png");
+          background-image: url("/svg/icons/seafaring.svg");
           background-size: 102px 27px; } }
       @media (max-width: 767.98px) {
         .be-top-header .be-navbar-header .navbar-brand {

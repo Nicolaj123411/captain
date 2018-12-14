@@ -16,30 +16,26 @@
                                 <div class="main-container">
                                     <div class="box mt-4">
                                         <h1>@lang('messages.quizStats')</h1>
-                                        <div class="trophy">
+                                        @foreach($quiz_list as $id)
+
+                                        <div class="@if(!$id->score) not-complete @endif trophy">
                                                 <div class=""><i class="fas fa-check-circle"></i></div>
-                                                <div class=""><img src="/svg/icons/livingroom.svg" alt=""></div>
-                                                <div class="">
-                                                    <h1 class="text-left">her er overskrift!</h1>
-                                                    <p>adipisicing elit. Doloribus, maiores....</p>
+                                                <div class="col-4"><img src="{{asset('svg/icons/'. App\Room::where('id', $id->room_id)->first()->icon) }}" alt=""></div>
+                                                <div class="col-8">
+                                                    <h1 class="text-left">{{ str_limit($id->question, 30)}}</h1>
+
                                             </div>
                                         </div>
-                                        <div class="trophy not-complete">
-                                                <div class=""><i class="fas fa-check-circle"></i></div>
-                                                <div class=""><img src="/svg/icons/livingroom.svg" alt=""></div>
-                                                <div class="">
-                                                    <h1 class="text-left">her er overskrift!</h1>
-                                                    <p>adipisicing elit. Doloribus, maiores....</p>
-                                            </div>
-                                        </div>
+                                        @endforeach
                                     </div>
+
                                     <div class="rope-container">
                                         <div class="rope"></div>
                                         <div class="rope rope-right"></div>
                                     </div>
                                     <div class="box score">
                                        <h1>score</h1>
-                                       <span>2/5</span>
+                                    <span>{{count(App\quiz_score::where('user_id', Auth::user()->id)->get())}}/{{count($quiz_list)}}</span>
                                     </div>
                                 </div>
                             </div>

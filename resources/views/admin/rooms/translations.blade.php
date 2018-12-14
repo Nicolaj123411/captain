@@ -16,12 +16,14 @@
                             <div class="row">
                                 @foreach($rooms as $room)
                                 <div class="col-lg-4">
-                                <div class="card"> <a class="btn btn-primary" href="{{route('room.edit', $room->id)}}">Edit</a><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteroom{{$room->id}}">Delete</button>@if($room->quiz()->where('lang', $room->lang)->first()) <a href="#">Quiz: {{$room->quiz()->where('lang', $room->lang)->first()->id}}</a>@else <a href="#">Add Quiz! {{$room->id}}</a> @endif
+                                <div class="card">
                                 <div class="card-header card-header-divider"><img class="mr-2" src="{{ asset('svg/lang/' . $room->lang . '.svg')}}" alt="{{$room->lang}}" height="40" width="40">{{$room->title}}<span class="card-subtitle"></span></div>
                                         <div class="card-body">
                                       {{$room->body}}
                                         </div>
-                                    </div>
+                                        <div class="container mb-2 pb-2">
+                                        <a class="btn btn-primary m-2" href="{{route('room.edit', $room->id)}}">Edit</a><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteroom{{$room->id}}">Delete</button>
+                                    </div> </div>
                                 </div>
                                       <!-- Modal -->
 <div class="modal fade  modal-full-color modal-full-color-danger " id="deleteroom{{$room->id}}" tabindex="-1" role="dialog" aria-labelledby="deleteroom{{$room->id}}Label"
@@ -55,13 +57,17 @@ aria-hidden="true">
                         <div class="col-sm-4">
                                 <div class="card card-table">
                                   <div class="card-header">
+                                        Add translation <br>
+                                        <a href="{{route('room.new.translation', $room_id)}}" class="mt-4 btn btn-primary">New translation</a>
                                   </div>
                                   <div class="card-body">
-                                  <h1>Add translation</h1>
-                                  <a href="{{route('room.new.translation', $room_id)}}" class="btn btn-primary">New translation</a>
+
+
                                 </div>
                               </div>
                       </div>
+
+
                 </div>
         </div>
       </div>
